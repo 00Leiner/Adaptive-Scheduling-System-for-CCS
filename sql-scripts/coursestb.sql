@@ -1,0 +1,6 @@
+CREATE TABLE courses (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  code VARCHAR(20) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  units INT NOT NULL
+);
