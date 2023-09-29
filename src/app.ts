@@ -1,14 +1,15 @@
-import express from 'express';
-import routeProgramBlock from './routes/routes.ProgramBlock'
 import { config } from "./config/config.mongodb";
+import mongoose from 'mongoose';
+import StartServer from './services/services.StartServer';
 
-const app = express()
-app.use(express.json())
-
-/** routes */
-app.use('/Program.block', routeProgramBlock) //use program block routes
-
-// Start the Express server
-app.listen(config.Server.port, () => {
-  console.log(`Server is running on port ${config.Server.port}`);
-});
+/** connect to mongo */
+mongoose
+  .connect(config.mongo.url, { retryWrites: true, w: "majority" })
+  .then(() => {
+    console.info("Connected to mongoDB. ");
+    StartServer(); // Call the StartServer function to start the server
+  })
+  .catch((error) => {
+    console.error("Unable to connect: ");
+    console.error(error);
+  });
