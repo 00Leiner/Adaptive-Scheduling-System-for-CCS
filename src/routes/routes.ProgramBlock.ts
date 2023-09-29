@@ -9,6 +9,6 @@ router.post( "/create/newProgramBlock/data", ValidateSchema(Schemas.ProgramBlock
 router.get( "/:programBlockID/:program-:block/view/data",controller.readProgramBlockController );// read or view the program block from database using id
 router.get("/view/all/data",controller.readAllProgramBlockController);// read or view all data inside db
 router.put("/:programBlockID/:program-:block/update/data", ValidateSchema(Schemas.ProgramBlock.update), controller.updateProgramBlockController);// update program block
-router.delete("/:programBlockID/:program-:block/delete/data", controller.deleteProgramBlockController);// delete program block
+router.delete("/:programBlockID/:program-:block/deleted/data", controller.deleteProgramBlockController);// delete program block
 
 export default router;
